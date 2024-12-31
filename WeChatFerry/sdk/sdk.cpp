@@ -1,4 +1,4 @@
-﻿#include "Shlwapi.h"
+﻿﻿#include "Shlwapi.h"
 #include "framework.h"
 #include <filesystem>
 #include <process.h>
@@ -7,11 +7,29 @@
 #include "injector.h"
 #include "sdk.h"
 #include "util.h"
+#include <string>
+#include <vector>
 
-static BOOL injected              = false;
-static HANDLE wcProcess           = NULL;
-static HMODULE spyBase            = NULL;
-static WCHAR spyDllPath[MAX_PATH] = { 0 };
+using namespace std;
+
+struct WxProcessInfo
+{
+    DWORD pid;
+    HANDLE wcProcess;
+    HMODULE spyBase;
+    bool injected;
+    WCHAR spyDllPath[MAX_PATH];
+    WxProcessInfo(DWORD pid)
+    {
+        this->pid = pid;
+        this->wcProcess = NULL;
+        this->spyBase = NULL;
+        this->injected = false;
+        this->spyDllPath[0] = 0;
+    }
+};
+
+static vector<WxProcessInfo> wxProcess;
 
 static int GetDllPath(bool debug, wchar_t *dllPath)
 {
