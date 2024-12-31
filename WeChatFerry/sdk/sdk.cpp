@@ -10,6 +10,18 @@
 #include <string>
 #include <vector>
 
+#define WCFSDKDLL L"WCFSDK.dll"
+#define WCFSPYDLL_DEBUG L"WCFSpyDebug.dll"
+#define WCFSPYDLL L"WCFSpy.dll"
+#define WECHAREXE L"WeChat.exe"
+
+bool OpenWeChat(DWORD* wcPid);
+bool IsProcessX64(DWORD pid);
+HANDLE InjectDll(DWORD pid, const wchar_t* dllPath, HMODULE* spyBase);
+bool CallDllFuncEx(HANDLE process, const wchar_t* dllPath, HMODULE spyBase, const char* funcName, LPVOID param, size_t paramSize, LPVOID result);
+bool CallDllFunc(HANDLE process, const wchar_t* dllPath, HMODULE spyBase, const char* funcName, LPVOID param);
+bool EjectDll(HANDLE process, HMODULE spyBase);
+
 using namespace std;
 
 struct WxProcessInfo

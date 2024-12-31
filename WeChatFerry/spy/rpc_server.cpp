@@ -42,9 +42,9 @@ namespace fs = std::filesystem;
 bool gIsLogging      = false;
 bool gIsListening    = false;
 bool gIsListeningPyq = false;
-mutex gMutex;
-condition_variable gCV;
-queue<WxMsg_t> gMsgQueue;
+std::mutex gMutex;
+std::condition_variable gCV;
+std::queue<WxMsg_t> gMsgQueue;
 
 static int lport       = 0;
 static DWORD lThreadId = 0;
