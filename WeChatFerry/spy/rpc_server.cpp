@@ -1074,9 +1074,13 @@ int RpcStopServer()
         nng_close(msgSock);
         // UnListenMessage();
         lIsRunning = false;
-        Sleep(1000);
+        HANDLE hThread = OpenThread(THREAD_TERMINATE, FALSE, lThreadId);
+        if (hThread) {
+            WaitForSingleObject(hThread, INFINITE);
+            CloseHandle(hThread);
+        }
         LOG_INFO("Server stoped.");
-    }
+    }   
 #if ENABLE_WX_LOG
     DisableLog();
 #endif
