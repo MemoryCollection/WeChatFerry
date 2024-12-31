@@ -108,10 +108,8 @@ jobs:
         with:
           name: v${{ env.version }}
           tag: v${{ env.version }}
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
+          token: ${{ github.token }}
           allowUpdates: true
           artifacts: "WeChatFerry/tmp/*"
           body: |
-            程序版本：`v${{ env.version }}`
-            配套微信版本：`${{ env.wechat_version }}`
             [📖 Python 文档](https://wechatferry.readthedocs.io/)
