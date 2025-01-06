@@ -1,12 +1,9 @@
 name: Build-WeChatFerry
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'The version to deploy'
-        required: true
-        default: 'v1.0.0'
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -108,8 +105,10 @@ jobs:
         with:
           name: v${{ env.version }}
           tag: v${{ env.version }}
-          token: ${{ github.token }}
+          token: ${{ secrets.REPO_TOKEN }}
           allowUpdates: true
           artifacts: "WeChatFerry/tmp/*"
           body: |
+            程序版本：`v${{ env.version }}`
+            配套微信版本：`${{ env.wechat_version }}`
             [📖 Python 文档](https://wechatferry.readthedocs.io/)
