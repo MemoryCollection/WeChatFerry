@@ -2,17 +2,24 @@
 
 一个玩微信的工具。更多介绍见：[WeChatFerry: 一个玩微信的工具](https://mp.weixin.qq.com/s/CGLfSaNDy8MyuyPWGjGJ7w)。
 
-<details>
-<summary><b>⚠️ 免责声明【必读】⚠️</b></summary>
+<details><summary><font color="red" size="12">免责声明【必读】</font></summary>
 
-请阅读完整的免责声明：[点击查看](WeChatFerry/DISCLAIMER.md)
+本工具仅供学习和技术研究使用，不得用于任何商业或非法行为，否则后果自负。
+
+本工具的作者不对本工具的安全性、完整性、可靠性、有效性、正确性或适用性做任何明示或暗示的保证，也不对本工具的使用或滥用造成的任何直接或间接的损失、责任、索赔、要求或诉讼承担任何责任。
+
+本工具的作者保留随时修改、更新、删除或终止本工具的权利，无需事先通知或承担任何义务。
+
+本工具的使用者应遵守相关法律法规，尊重微信的版权和隐私，不得侵犯微信或其他第三方的合法权益，不得从事任何违法或不道德的行为。
+
+本工具的使用者在下载、安装、运行或使用本工具时，即表示已阅读并同意本免责声明。如有异议，请立即停止使用本工具，并删除所有相关文件。
 
 </details>
 
-|[📖 Python 文档](https://wechatferry.readthedocs.io/)|[📺 Python 视频教程](https://mp.weixin.qq.com/s/APdjGyZ2hllXxyG_sNCfXQ)|[🙋 FAQ](https://mp.weixin.qq.com/s/UbzPuw3-2xZLEzUABXMEdw)|
+|[📖 Python 文档](https://wechatferry.readthedocs.io/)|[📺 Python 视频教程](https://mp.weixin.qq.com/s/APdjGyZ2hllXxyG_sNCfXQ)|[🙋 FAQ](https://mp.weixin.qq.com/s/YvgFFhF6D-79kXDzRqtg6w)|
 |:-:|:-:|:-:|
 
-👉 [WeChatRobot🤖](https://github.com/lich0821/WeChatRobot)，一个基于 WeChatFerry 的 Python 机器人示例。
+👉 [WeChatRobot🤖](https://github.com/lich0821/WeChatRobot)，一个基于 WeChatFerry 的 Python 机器人框架。
 
 |![碲矿](assets/TEQuant.jpg)|![赞赏](assets/QR.jpeg)|
 |:-:|:-:|
@@ -32,7 +39,7 @@
 * 发送图片消息
 * 发送文件消息
 * 发送卡片消息
-* 发送 XML
+* 发送 XML 消息
 * 发送 GIF 消息
 * 拍一拍群友
 * 转发消息
@@ -42,7 +49,6 @@
 * 获取朋友圈消息
 * 下载图片、视频、文件
 * 解密图片
-* 通过好友申请
 * 添加群成员
 * 删除群成员
 * 邀请群成员
@@ -70,12 +76,11 @@
 pip install --upgrade wcferry
 ```
 
-* 参考示例：[🤖WeChatRobot](https://github.com/lich0821/WeChatRobot)
+* 参考框架：[🤖WeChatRobot](https://github.com/lich0821/WeChatRobot)
 
 ### HTTP
 * [wcfrust](https://github.com/lich0821/wcf-client-rust)（基于 Rust）
 * [go_wcf_http](clients/go_wcf_http/README.MD)（基于 Go）
-* [wrest-chat](https://github.com/opentdp/wrest-chat)（基于 Go）
 * [wcf-http](https://github.com/yuxiaoli/wcf-http)（基于 Python）
 
 ### Java
@@ -87,7 +92,6 @@ pip install --upgrade wcferry
 * [wechatferry](https://github.com/wechatferry/wechatferry)
 
 ### C#
-* [WeChatFerry.Net](https://github.com/SilkageNet/WeChatFerry.Net) Install using Nuget
 * [WeChatFerry-CSharp](https://github.com/send010/WeChatFerry-CSharp)
 
 ### Rust
@@ -170,7 +174,7 @@ sdk.WxDestroySDK()
 
 ### 调试日志
 ```c
-    util::dbg_msg("ListenMessage"); // 封装的 OutputDebugString
+    DbgMsg("ListenMessage"); // 封装的 OutputDebugString
     OutputDebugString(L"ListenMessage\n");
     MessageBox(NULL, L"ListenMessage", L"ListenMessage", 0);
 ```
@@ -207,9 +211,9 @@ WeChatFerry
 
 ## 版本更新
 
-### v39.4.4
+### v39.3.4
 
-* 实现通发送 XML 功能。
+* 实现获取登录二维码
 
 <details><summary>点击查看更多</summary>
 
@@ -220,30 +224,6 @@ WeChatFerry
 * `x` 是适配的微信的小版本号，从 0 开始
 * `y` 是 `WeChatFerry` 的版本，从 0 开始
 * `z` 是各客户端的版本，从 0 开始
-
-### v39.4.3
-
-* 实现通过好友申请功能。
-
-### v39.4.2
-
-* 修复附件下载类型错误。
-
-### v39.4.1
-
-* 修复乱码问题。
-
-### v39.4.0
-
-* 重构代码，适配 `3.9.12.17`。
-
-### v39.3.5
-
-* 代码优化
-
-### v39.3.4
-
-* 实现获取登录二维码
 
 ### v39.3.3
 

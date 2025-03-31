@@ -134,19 +134,21 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)Out
-xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry</Command>
+xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry\dll</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy files</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\com\log.h" />
     <ClInclude Include="..\com\util.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="injector.h" />
     <ClInclude Include="sdk.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\com\log.cpp" />
     <ClCompile Include="..\com\util.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="injector.cpp" />

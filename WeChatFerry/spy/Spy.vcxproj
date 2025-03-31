@@ -112,9 +112,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>call "$(SolutionDir)license_check.bat"
-if errorlevel 1 exit 1
-cd $(SolutionDir)rpc\proto
+      <Command>cd $(SolutionDir)rpc\proto
 $(SolutionDir)rpc\tool\protoc --nanopb_out=. wcf.proto</Command>
     </PreBuildEvent>
     <PreBuildEvent>
@@ -126,9 +124,7 @@ xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).exp $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).lib $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).pdb $(SolutionDir)Out
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)Out
-xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Command>
+xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry\dll</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy spy.dll</Message>
@@ -165,9 +161,7 @@ xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Co
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>call "$(SolutionDir)license_check.bat"
-if errorlevel 1 exit 1
-cd $(SolutionDir)rpc\proto
+      <Command>cd $(SolutionDir)rpc\proto
 $(SolutionDir)rpc\tool\protoc --nanopb_out=. wcf.proto</Command>
     </PreBuildEvent>
     <PreBuildEvent>
@@ -179,9 +173,7 @@ xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).exp $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).lib $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).pdb $(SolutionDir)Out
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)Out
-xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Command>
+xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry\dll</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy spy.dll</Message>
@@ -219,9 +211,7 @@ xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Co
     </Link>
     <PreBuildEvent>
       <Message>Generating PB files</Message>
-      <Command>call "$(SolutionDir)license_check.bat"
-if errorlevel 1 exit 1
-cd $(SolutionDir)rpc\proto
+      <Command>cd $(SolutionDir)rpc\proto
 $(SolutionDir)rpc\tool\protoc --nanopb_out=. wcf.proto</Command>
     </PreBuildEvent>
     <PostBuildEvent>
@@ -231,13 +221,11 @@ xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).exp $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).lib $(SolutionDir)Out
 xcopy /y $(OutDir)$(TargetName).pdb $(SolutionDir)Out
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)Out
-xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry
-xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Command>
+xcopy /y $(OutDir)$(TargetFileName) $(SolutionDir)..\clients\python\wcferry\dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\com\log.hpp" />
+    <ClInclude Include="..\com\log.h" />
     <ClInclude Include="..\com\util.h" />
     <ClInclude Include="..\rpc\nanopb\pb.h" />
     <ClInclude Include="..\rpc\nanopb\pb_common.h" />
@@ -247,38 +235,38 @@ xcopy /y $(SolutionDir)DISCLAIMER.md $(SolutionDir)..\clients\python\wcferry</Co
     <ClInclude Include="..\rpc\pb_util.h" />
     <ClInclude Include="..\rpc\proto\wcf.pb.h" />
     <ClInclude Include="..\smc\codec.h" />
-    <ClInclude Include="chatroom_manager.h" />
-    <ClInclude Include="misc_manager.h" />
-    <ClInclude Include="database_executor.h" />
+    <ClInclude Include="chatroom_mgmt.h" />
+    <ClInclude Include="funcs.h" />
+    <ClInclude Include="exec_sql.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="contact_manager.h" />
-    <ClInclude Include="message_handler.h" />
+    <ClInclude Include="contact_mgmt.h" />
+    <ClInclude Include="receive_msg.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="rpc_helper.h" />
     <ClInclude Include="rpc_server.h" />
-    <ClInclude Include="message_sender.h" />
+    <ClInclude Include="send_msg.h" />
     <ClInclude Include="spy.h" />
     <ClInclude Include="spy_types.h" />
     <ClInclude Include="sqlite3.h" />
-    <ClInclude Include="account_manager.h" />
+    <ClInclude Include="user_info.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\com\log.cpp" />
     <ClCompile Include="..\com\util.cpp" />
     <ClCompile Include="..\rpc\nanopb\pb_common.c" />
     <ClCompile Include="..\rpc\nanopb\pb_decode.c" />
     <ClCompile Include="..\rpc\nanopb\pb_encode.c" />
     <ClCompile Include="..\rpc\pb_util.cpp" />
     <ClCompile Include="..\rpc\proto\wcf.pb.c" />
-    <ClCompile Include="chatroom_manager.cpp" />
-    <ClCompile Include="misc_manager.cpp" />
+    <ClCompile Include="chatroom_mgmt.cpp" />
+    <ClCompile Include="funcs.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="database_executor.cpp" />
-    <ClCompile Include="contact_manager.cpp" />
-    <ClCompile Include="message_handler.cpp" />
+    <ClCompile Include="exec_sql.cpp" />
+    <ClCompile Include="contact_mgmt.cpp" />
+    <ClCompile Include="receive_msg.cpp" />
     <ClCompile Include="rpc_server.cpp" />
-    <ClCompile Include="message_sender.cpp" />
+    <ClCompile Include="send_msg.cpp" />
     <ClCompile Include="spy.cpp" />
-    <ClCompile Include="account_manager.cpp" />
+    <ClCompile Include="user_info.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\rpc\proto\wcf.proto" />
